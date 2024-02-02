@@ -6,7 +6,7 @@ import app.model.AppModel;
 public class AppBaseModel implements AppModel {
 
     @Override
-    public double calcPayment(Purchase purchase) {
+    public double deliverPayment(Purchase purchase) {
         return purchase.getQuota() * purchase.getPrice();
     }
 }

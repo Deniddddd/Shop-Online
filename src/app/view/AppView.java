@@ -15,10 +15,12 @@ public class AppView {
         String phone = scanner.nextLine().trim();
         System.out.print("Enter product quantity, pcs.: ");
         String quantity = scanner.nextLine().trim();
+        System.out.print("нужна вам доставка да/нет ");
+        String delivery = scanner.nextLine().trim();
         System.out.print("Enter product price, USD: ");
         String price = scanner.nextLine().trim();
         scanner.close();
-        return new String[]{name, phone, quantity, price};
+        return new String[]{name, phone, quantity, price,delivery};
     }
 
     public void getOutput(String output) {

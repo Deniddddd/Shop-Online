@@ -3,7 +3,7 @@ package app.controller;
 import app.entity.Buyer;
 import app.entity.Purchase;
 import app.model.impl.AppBaseModel;
-import app.model.impl.AppDiscountModel;
+import app.model.impl.AppDeliveryModel;
 import app.untils.Rounder;
 import app.view.AppView;
 
@@ -19,13 +19,13 @@ public class AppController {
         String output;
         if (purchase.getQuota() <= 2) {
             AppBaseModel model = new AppBaseModel();
-            String payment = Rounder.roundValue(model.calcPayment(purchase));
+            String payment = Rounder.roundValue(model.deliverPayment(purchase));
             output = "\nBuyer: " + buyer.getName() + ", " + buyer.getPhone() +
                     "\nPayment is " + CURRENCY + " " + payment;
             view.getOutput(output);
         } else {
-            AppDiscountModel model = new AppDiscountModel();
-            String payment = Rounder.roundValue(model.calcPayment(purchase));
+            AppDeliveryModel model = new AppDeliveryModel();
+            String payment = Rounder.roundValue(model.deliverPayment(purchase));
             output = "\nBuyer: " + buyer.getName() + ", " + buyer.getPhone() +
                     "\nPayment is " + CURRENCY + " " + payment;
             view.getOutput(output);
@@ -37,7 +37,8 @@ public class AppController {
     }
 
     private Purchase getPurchase(String[] data) {
-        return new Purchase(Integer.parseInt(data[2]),
-                Double.parseDouble(data[3]));
+        return new Purchase(Integer.parseInt(data[1]),
+                Double.parseDouble(data[2]),
+                Integer.parseInt(data[3]));
     }
 }

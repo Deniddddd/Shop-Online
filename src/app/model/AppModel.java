@@ -4,5 +4,5 @@ import app.entity.Purchase;
 
 public interface AppModel {
 
-    double calcPayment(Purchase purchase);
+    double deliverPayment(Purchase purchase);
 }
